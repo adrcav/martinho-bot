@@ -10,13 +10,20 @@
     "type": "git",
     "url": "git+https://github.com/adrcav/martinho-bot.git"
   },
-  "author": "",
-  "license": "ISC",
+  "contributors": [
+    "Adriel Cavalcanti",
+    "Ítalo Sousa"
+  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/adrcav/martinho-bot/issues"
   },
   "homepage": "https://github.com/adrcav/martinho-bot#readme",
   "dependencies": {
     "discord.js": "^11.3.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1"
   }
 }
