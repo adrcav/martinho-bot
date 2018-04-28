@@ -1,0 +1,22 @@
+{
+  "name": "martinho-bot",
+  "version": "1.0.0",
+  "description": "A simple Discord Bot.",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrcav/martinho-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adrcav/martinho-bot/issues"
+  },
+  "homepage": "https://github.com/adrcav/martinho-bot#readme",
+  "dependencies": {
+    "discord.js": "^11.3.2"
+  }
+}
