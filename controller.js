@@ -40,6 +40,7 @@ function getMessage(trigger, guildId) {
             trigger: trigger
         })
         .select('message')
+        .sort('-createdAt')
         .exec((err, message) => {
             if (err) reject(err);
             console.log(message);
