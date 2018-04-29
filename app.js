@@ -32,12 +32,12 @@ client.on('ready', () => {
 });
 
 client.on('guildCreate', guild => {
-    console.log('New guild joined: ' + guild.name + '(Users: ' + guild.memberCount + ', ID: '+ guild.id + ')');
+    console.log('New guild joined: ' + guild.name + ' (Users: ' + guild.memberCount + ', ID: '+ guild.id + ')');
     client.user.setActivity('Ajudando ' + client.users.size + ' pessoas! :)');
 });
 
 client.on('guildDelete', guild => {
-    console.log('Guild deleted: ' + guild.name + '(ID: + ' + guild.id + ')');
+    console.log('Guild deleted: ' + guild.name + ' (ID: + ' + guild.id + ')');
     client.user.setActivity('Ajudando ' + client.users.size + 'pessoas! :)');
 });
 
@@ -52,21 +52,22 @@ client.on('message', async message => {
         const command = args.shift().toLowerCase();
     
         if (command === 'ping') {
-            const m = await message.channel.send('Pera aê, mano...');
+            const m = await message.channel.send('Pera aê, mano... :nerd:');
             m.edit('Pong! Latência: ' + Math.round(client.ping) + 'ms.');
         }
     
         if (command === 'add') {
             // add function
-            const m = message.channel.send('Pera aê, mano...');        
+            const m = await message.channel.send('Pera aê, mano... :nerd:');        
             controller.addNewMessage(args, guildId)
                 .then(res => {
                     console.log(res);
-                    m.edit('Pronto boy');
+                    console.log(m);
+                    m.edit('Pronto men :ok_hand:');
                 })
                 .catch(err => {
                     console.log(err);
-                    m.edit('Deu pra adicionar parça, foi mal');                
+                    m.edit('Não deu pra adicionar, parça. Foi mal :cry:');                
                 })
         }
     
