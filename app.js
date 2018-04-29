@@ -43,7 +43,26 @@ client.on('guildDelete', guild => {
 
 // Users messages
 client.on('message', async message => {
+    if (message.author.bot) return;
 
+    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+    const guildId = guild.id;
+
+    if (command === 'ping') {
+        const m = await message.channel.send('Pera aê, mano...');
+        m.edit('Pong! Latência: ' + Math.round(client.ping) + 'ms.');
+    }
+
+    if (command === 'add') {
+        // add function
+    }
+
+    if (command === 'show') {
+        // show function
+    }
+
+    // trigger function (mongo)
 });
 
 client.login(config.token);
