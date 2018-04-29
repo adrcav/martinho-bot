@@ -37,7 +37,7 @@ client.on('guildCreate', guild => {
 });
 
 client.on('guildDelete', guild => {
-    console.log('Guild deleted: ' + guild.name + ' (ID: + ' + guild.id + ')');
+    console.log('Guild deleted: ' + guild.name + ' (ID: ' + guild.id + ')');
     client.user.setActivity('Ajudando ' + client.users.size + 'pessoas! :)');
 });
 
@@ -48,26 +48,41 @@ client.on('message', async message => {
     const guildId = message.channel.guild.id;
 
     if (message.content.indexOf(config.prefix) === 0) {
-        const args = message.content.slice(config.prefix.length).trim().split(' ');
+        let args = message.content.slice(config.prefix.length).trim().split(' ');
         const command = args.shift().toLowerCase();
     
         if (command === 'ping') {
             const m = await message.channel.send('Pera aê, mano... :nerd:');
             m.edit('Pong! Latência: ' + Math.round(client.ping) + 'ms.');
         }
+
+        if (command === 'help') {
+            let commands = [
+                { cmd: 'ping', desc: 'Retorna o ping do servidor.' },
+                { cmd: 'add <palavra> = <resposta>', desc: 'Adiciona uma resposta ao bot.' },
+                { cmd: 'help', desc: 'Lista de comandos.' }
+            ];
+
+            let res = '\n\n**Meus comandos:** \n';
+            commands.forEach(elem => {
+                res += '*$' + elem.cmd + '* - ' + elem.desc + '\n';
+            });
+
+            return message.reply(res);
+        }
     
         if (command === 'add') {
+            let msg = controller.transformMessage(args);
             // add function
             const m = await message.channel.send('Pera aê, mano... :nerd:');        
-            controller.addNewMessage(args, guildId)
+            controller.addNewMessage(msg, guildId)
                 .then(res => {
-                    console.log(res);
-                    console.log(m);
-                    m.edit('Pronto men :ok_hand:');
+                    //console.log(res);
+                    m.edit('Pronto men! Mensagem adicionada :ok_hand: :ok_hand:');
                 })
                 .catch(err => {
-                    console.log(err);
-                    m.edit('Não deu pra adicionar, parça. Foi mal :cry:');                
+                    //console.log(err);
+                    m.edit('Não deu pra adicionar, parça. Foi mal :cry: :cry:');                
                 })
         }
     
@@ -76,13 +91,14 @@ client.on('message', async message => {
         }
     }
 
-    controller.getMessage(message.content, guildId)
-        .then(res => {
-            return message.reply(res.message);
-        })
-        .catch(err => {
-            console.log(err)
-        });
+    if (typeof(message.content) === 'string') {
+        controller.getMessage(message.content, guildId)
+            .then(res => {
+                message.reply(res.message);
+            }).catch(err => {
+                //console.log('Trigger not found');
+            });
+    }
     
 });
 

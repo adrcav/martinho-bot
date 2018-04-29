@@ -3,11 +3,20 @@ const Message = require('./models/message.model');
 module.exports = {
     helloWorld: helloWorld,
     addNewMessage: addNewMessage,
-    getMessage: getMessage
+    getMessage: getMessage,
+    transformMessage: transformMessage
 };
 
 function helloWorld() {
     return "Hello World";
+}
+
+function transformMessage(args) {
+    let str = args.join(' ').split('=');
+    return [
+        str[0].toLowerCase().trim(),
+        str[1].trim()
+    ];
 }
 
 function addNewMessage(args, guidId) {
@@ -43,7 +52,7 @@ function getMessage(trigger, guildId) {
         .sort('-createdAt')
         .exec((err, message) => {
             if (err) reject(err);
-            console.log(message);
+            //console.log(message);
             resolve(message);
         });
     });
