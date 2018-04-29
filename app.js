@@ -52,42 +52,64 @@ client.on('message', async message => {
         const command = args.shift().toLowerCase();
     
         if (command === 'ping') {
-            const m = await message.channel.send('Pera aê, mano... :nerd:');
+            const m = await message.channel.send(config.waitingMessage);
             m.edit('Pong! Latência: ' + Math.round(client.ping) + 'ms.');
         }
 
         if (command === 'help') {
-            let commands = [
-                { cmd: 'ping', desc: 'Retorna o ping do servidor.' },
-                { cmd: 'add <palavra> = <resposta>', desc: 'Adiciona uma resposta ao bot.' },
-                { cmd: 'help', desc: 'Lista de comandos.' }
-            ];
-
             let res = '\n\n**Meus comandos:** \n';
-            commands.forEach(elem => {
+            
+            config.commands.forEach(elem => {
                 res += '*$' + elem.cmd + '* - ' + elem.desc + '\n';
             });
 
             return message.reply(res);
         }
+
+        if (command === 'say') {
+            let msg = args.join(' ');
+            message.delete().catch(err => {
+                console.log('Say Error: ' + err);
+            });
+            message.channel.send(msg);
+        }
     
         if (command === 'add') {
             let msg = controller.transformMessage(args);
-            // add function
-            const m = await message.channel.send('Pera aê, mano... :nerd:');        
-            controller.addNewMessage(msg, guildId)
-                .then(res => {
-                    //console.log(res);
-                    m.edit('Pronto men! Mensagem adicionada :ok_hand: :ok_hand:');
+            const m = await message.channel.send(config.waitingMessage);        
+            controller.deleteOldMessages(msg[0], guildId)
+                .then(() => {
+                    controller.addNewMessage(msg, guildId)
+                        .then(res => {
+                            //console.log(res);
+                            m.edit('Pronto men! Mensagem adicionada :ok_hand: :ok_hand:');
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            m.edit('Não deu pra adicionar, parça. Foi mal :cry: :cry:');                
+                        });
                 })
                 .catch(err => {
-                    //console.log(err);
-                    m.edit('Não deu pra adicionar, parça. Foi mal :cry: :cry:');                
-                })
+                    console.log(err);
+                    m.edit('Não deu pra adicionar, parça. Foi mal :cry: :cry:');  
+                });
         }
     
         if (command === 'show') {
-            // show function
+            const m = await message.channel.send(config.waitingMessage);
+            controller.showMessages(args, guildId)
+                .then(res => {
+                    let commands = '';
+                    res.forEach(elem => {
+                        commands += elem.trigger + ' = ' + elem.message + '\n';
+                    });
+                    //console.log(commands);
+                    m.edit(commands);
+                })
+                .catch(err => {
+                    console.log(err);
+                    m.edit('Não consegui encontrar as mensagens, sorry :cry: :confused:');
+                });
         }
     }
 

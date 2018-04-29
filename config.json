@@ -1,4 +1,27 @@
 {
     "token": "NDM5ODg5NzA3ODM3NTU0NzI5.DcZuxw.iG1iyeVNegZMbVImKAH1Az41fiE",
-    "prefix": "$"
+    "prefix": "$",
+    "waitingMessage": "Pera aê, mano... :nerd:",
+    "commands": [
+        {
+            "cmd": "ping",
+            "desc": "Retorna o ping do servidor."
+        },
+        {
+            "cmd": "add <palavra> = <resposta>",
+            "desc": "Adiciona uma resposta ao bot."
+        },
+        {
+            "cmd": "help",
+            "desc": "Lista de comandos."
+        },
+        {
+            "cmd": "say <mensagem>",
+            "desc": "O bot fala uma frase específica."
+        },
+        {
+            "cmd": "show all",
+            "desc": "Exibe todas as respostas cadastradas."
+        }
+    ]
 }

@@ -1,15 +1,12 @@
 const Message = require('./models/message.model');
 
 module.exports = {
-    helloWorld: helloWorld,
     addNewMessage: addNewMessage,
     getMessage: getMessage,
-    transformMessage: transformMessage
+    transformMessage: transformMessage,
+    showMessages: showMessages,
+    deleteOldMessages: deleteOldMessages
 };
-
-function helloWorld() {
-    return "Hello World";
-}
 
 function transformMessage(args) {
     let str = args.join(' ').split('=');
@@ -42,6 +39,23 @@ function addNewMessage(args, guidId) {
     });
 }
 
+function showMessages(args, guildId) {
+    return new Promise( function(resolve, reject) {
+        if (args.length !== 1) return reject('Invalid arguments');
+
+        Message.find({
+            guildId: guildId
+        })
+        .select('message trigger')
+        .sort('-createdAt')
+        .exec((err, message) => {
+            if (err) reject(err);
+            //console.log(message);
+            resolve(message);
+        });
+    });
+}
+
 function getMessage(trigger, guildId) {
     return new Promise( function(resolve, reject) {
         Message.findOne({
@@ -54,6 +68,20 @@ function getMessage(trigger, guildId) {
             if (err) reject(err);
             //console.log(message);
             resolve(message);
+        });
+    });
+}
+
+function deleteOldMessages(trigger, guildId) {
+    return new Promise( function(resolve, reject) {
+        Message.findOneAndRemove({
+            guildId: guildId,
+            trigger: trigger
+        })
+        .exec((err, success) => {
+            if (err) reject(err);
+            //console.log(success);
+            resolve(success);
         });
     });
 }
