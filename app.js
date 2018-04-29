@@ -45,31 +45,34 @@ client.on('guildDelete', guild => {
 client.on('message', async message => {
     if (message.author.bot) return;
 
-    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
     const guildId = message.channel.guild.id;
 
-    if (command === 'ping') {
-        const m = await message.channel.send('Pera aê, mano...');
-        m.edit('Pong! Latência: ' + Math.round(client.ping) + 'ms.');
-    }
-
-    if (command === 'add') {
-        // add function
-        const m = message.channel.send('Pera aê, mano...');        
-        controller.addNewMessage(args, guildId)
-            .then(res => {
-                console.log(res);
-                m.edit('Pronto boy');
-            })
-            .catch(err => {
-                console.log(err);
-                m.edit('Deu pra adicionar parça, foi mal');                
-            })
-    }
-
-    if (command === 'show') {
-        // show function
+    if (message.content.indexOf(config.prefix) === 0) {
+        const args = message.content.slice(config.prefix.length).trim().split(' ');
+        const command = args.shift().toLowerCase();
+    
+        if (command === 'ping') {
+            const m = await message.channel.send('Pera aê, mano...');
+            m.edit('Pong! Latência: ' + Math.round(client.ping) + 'ms.');
+        }
+    
+        if (command === 'add') {
+            // add function
+            const m = message.channel.send('Pera aê, mano...');        
+            controller.addNewMessage(args, guildId)
+                .then(res => {
+                    console.log(res);
+                    m.edit('Pronto boy');
+                })
+                .catch(err => {
+                    console.log(err);
+                    m.edit('Deu pra adicionar parça, foi mal');                
+                })
+        }
+    
+        if (command === 'show') {
+            // show function
+        }
     }
 
     // trigger function (mongo)
