@@ -56,6 +56,16 @@ client.on('message', async message => {
 
     if (command === 'add') {
         // add function
+        const m = message.channel.send('Pera aê, mano...');        
+        controller.addNewMessage(args, guildId)
+            .then(res => {
+                console.log(res);
+                m.edit('Pronto boy');
+            })
+            .catch(err => {
+                console.log(err);
+                m.edit('Deu pra adicionar parça, foi mal');                
+            })
     }
 
     if (command === 'show') {

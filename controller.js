@@ -10,7 +10,7 @@ function helloWorld() {
 }
 
 function addNewMessage(args, guidId) {
-    return new Promise( function (resolve, reject) {
+    return new Promise( function(resolve, reject) {
         if (args.length < 2) return reject('Not enough arguments');
 
         let messageData = {
@@ -28,6 +28,22 @@ function addNewMessage(args, guidId) {
                 console.log(data);
                 resolve(data);
             }
+        });
+    });
+}
+
+function getMessage(trigger, guidId) {
+    return new Promise( function(resolve, reject) {
+        let message = new Message();
+        message.findOne({
+            guildId: guildId,
+            trigger: trigger
+        })
+        .select('message')
+        .exec((err, message) => {
+            if (err) reject(err);
+            console.log(message);
+            resolve(message)
         });
     });
 }
