@@ -75,7 +75,14 @@ client.on('message', async message => {
         }
     }
 
-    // trigger function (mongo)
+    controller.getMessage(message.content, guildId)
+        .then(res => {
+            return message.reply(res.message);
+        })
+        .catch(err => {
+            console.log(err)
+        });
+    
 });
 
 client.login(config.token);

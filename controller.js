@@ -2,7 +2,8 @@ const Message = require('./models/message.model');
 
 module.exports = {
     helloWorld: helloWorld,
-    addNewMessage: addNewMessage
+    addNewMessage: addNewMessage,
+    getMessage: getMessage
 };
 
 function helloWorld() {
@@ -32,10 +33,9 @@ function addNewMessage(args, guidId) {
     });
 }
 
-function getMessage(trigger, guidId) {
+function getMessage(trigger, guildId) {
     return new Promise( function(resolve, reject) {
-        let message = new Message();
-        message.findOne({
+        Message.findOne({
             guildId: guildId,
             trigger: trigger
         })
@@ -43,7 +43,7 @@ function getMessage(trigger, guidId) {
         .exec((err, message) => {
             if (err) reject(err);
             console.log(message);
-            resolve(message)
+            resolve(message);
         });
     });
 }
