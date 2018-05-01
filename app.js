@@ -132,8 +132,13 @@ client.on('message', async message => {
     }
     
 });
+
 app.listen(port, function() {
     console.log('Our app is running on port: ' + port);
+});
+
+app.get('/', (req, res) => {
+    res.send(200);
 });
 
 client.login(config.token);
