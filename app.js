@@ -28,17 +28,17 @@ const client = new Discord.Client();
 client.on('ready', () => {
     console.log('Martinho Bot has started! :)');
     console.log('Users: ' + client.users.size + ' | Guilds: ' + client.guilds.size);
-    client.user.setActivity('Ajudando ' + client.users.size + ' pessoas! :)');
+    client.user.setActivity('Conhecendo ' + client.users.size + ' pessoas! :)');
 });
 
 client.on('guildCreate', guild => {
     console.log('New guild joined: ' + guild.name + ' (Users: ' + guild.memberCount + ', ID: '+ guild.id + ')');
-    client.user.setActivity('Ajudando ' + client.users.size + ' pessoas! :)');
+    client.user.setActivity('Conhecendo ' + client.users.size + ' pessoas! :)');
 });
 
 client.on('guildDelete', guild => {
     console.log('Guild deleted: ' + guild.name + ' (ID: ' + guild.id + ')');
-    client.user.setActivity('Ajudando ' + client.users.size + 'pessoas! :)');
+    client.user.setActivity('Conhecendo ' + client.users.size + 'pessoas! :)');
 });
 
 // Users messages
