@@ -106,19 +106,23 @@ client.on('message', async message => {
     
         if (command === 'show') {
             const m = await message.channel.send(config.waitingMessage);
-            controller.showMessages(args, guildId)
-                .then(res => {
-                    let commands = '';
-                    res.forEach(elem => {
-                        commands += elem.trigger + ' = ' + elem.message + '\n';
+            if (message.member.roles.some(r => ["Administrator"].includes(r.name))) {
+                controller.showMessages(args, guildId)
+                    .then(res => {
+                        let commands = '';
+                        res.forEach(elem => {
+                            commands += elem.trigger + ' = ' + elem.message + '\n';
+                        });
+                        //console.log(commands);
+                        m.edit(commands);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        m.edit('Não consegui encontrar as mensagens, sorry :cry: :confused:');
                     });
-                    //console.log(commands);
-                    m.edit(commands);
-                })
-                .catch(err => {
-                    console.log(err);
-                    m.edit('Não consegui encontrar as mensagens, sorry :cry: :confused:');
-                });
+            } else {
+                m.edit('Pô, mano, vc não tem permissão pra esse comando. :frowning2: :cry:');
+            }
         }
     }
 
