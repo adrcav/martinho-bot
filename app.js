@@ -75,7 +75,7 @@ client.on('message', async message => {
             message.delete().catch(err => {
                 console.log('Say Error: ' + err);
             });
-            message.channel.send(msg);
+            message.channel.send(msg, { tts: true });
         }
     
         if (command === 'add') {
