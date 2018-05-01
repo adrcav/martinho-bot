@@ -106,7 +106,7 @@ client.on('message', async message => {
     
         if (command === 'show') {
             const m = await message.channel.send(config.waitingMessage);
-            if (message.member.roles.some(r => ["Administrator"].includes(r.name))) {
+            if (message.member.hasPermission('KICK_MEMBERS')) {
                 controller.showMessages(args, guildId)
                     .then(res => {
                         let commands = '';
@@ -114,7 +114,8 @@ client.on('message', async message => {
                             commands += elem.trigger + ' = ' + elem.message + '\n';
                         });
                         //console.log(commands);
-                        m.edit(commands);
+                        m.edit('Checa a DM, brother! :call_me:');
+                        message.author.send(commands);
                     })
                     .catch(err => {
                         console.log(err);
