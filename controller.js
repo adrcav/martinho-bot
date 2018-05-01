@@ -5,7 +5,8 @@ module.exports = {
     getMessage: getMessage,
     transformMessage: transformMessage,
     showMessages: showMessages,
-    deleteOldMessages: deleteOldMessages
+    deleteOldMessages: deleteOldMessages,
+    getRandomNumber: getRandomNumber
 };
 
 function transformMessage(args) {
@@ -14,6 +15,12 @@ function transformMessage(args) {
         str[0].toLowerCase().trim(),
         str[1].trim()
     ];
+}
+
+function getRandomNumber(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function addNewMessage(args, guidId) {

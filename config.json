@@ -2,6 +2,13 @@
     "token": "NDM5ODg5NzA3ODM3NTU0NzI5.DcZuxw.iG1iyeVNegZMbVImKAH1Az41fiE",
     "prefix": "$",
     "waitingMessage": "Pera aê, mano... :nerd:",
+    "successMessages": [
+        "Show de bola! É muito top ficar mais inteligente :rofl:",
+        "Valeu, cara! Aprender é muito bom!",
+        "OPA!!! Cérebro funcionando, hein?! Aprendendo sempre :alien: :smiley:",
+        "EAE MENS!!! To aprendendo, viu? Preparem-se! :penguin:",
+        "Aí sim, aprendizado constante! Muito bom!!! :slight_smile: :upside_down:"
+    ],
     "commands": [
         {
             "cmd": "ping",

@@ -89,7 +89,9 @@ client.on('message', async message => {
                             message.delete().catch(err => {
                                 console.log('Delete error: ' + err);
                             });
-                            m.edit('Pronto men! Mensagem adicionada :ok_hand: :ok_hand:');
+                            // select a random success message
+                            let coolMessage = config.successMessages[controller.getRandomNumber(0, config.successMessages.length)];
+                            m.edit(coolMessage);
                         })
                         .catch(err => {
                             console.log(err);
