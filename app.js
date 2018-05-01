@@ -47,7 +47,7 @@ client.on('guildDelete', guild => {
 
 // Users messages
 client.on('message', async message => {
-    if (message.author.bot) return;
+    if (message.author.bot && message.author.id !== '440523141110956032') return;
 
     const guildId = message.channel.guild.id;
 
