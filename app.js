@@ -5,9 +5,13 @@
 */
 
 const Discord = require('discord.js');
+const express = require('express');
 const mongoose = require('mongoose');
 const config = require('./config.json');
 const controller = require('./controller.js');
+
+const app = express();
+const port = process.env.PORT || 8080
 
 // Mongo connect
 mongoose.connect("mongodb://martinhodb:martinho147@martinhobot-shard-00-00-cus2j.mongodb.net:27017,martinhobot-shard-00-01-cus2j.mongodb.net:27017,martinhobot-shard-00-02-cus2j.mongodb.net:27017/test?ssl=true&replicaSet=MartinhoBot-shard-0&authSource=admin");
@@ -122,6 +126,9 @@ client.on('message', async message => {
             });
     }
     
+});
+app.listen(port, function() {
+    console.log('Our app is running on port: ' + port);
 });
 
 client.login(config.token);
