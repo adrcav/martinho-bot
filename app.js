@@ -123,7 +123,8 @@ client.on('message', async message => {
     }
 
     if (typeof(message.content) === 'string') {
-        controller.getMessage(message.content, guildId)
+        let msg = message.content.toLowerCase().trim();
+        controller.getMessage(msg, guildId)
             .then(res => {
                 message.reply(res.message);
             }).catch(err => {
