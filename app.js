@@ -86,6 +86,9 @@ client.on('message', async message => {
                     controller.addNewMessage(msg, guildId)
                         .then(res => {
                             //console.log(res);
+                            message.delete().catch(err => {
+                                console.log('Delete error: ' + err);
+                            });
                             m.edit('Pronto men! Mensagem adicionada :ok_hand: :ok_hand:');
                         })
                         .catch(err => {
