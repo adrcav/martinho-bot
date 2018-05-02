@@ -47,7 +47,7 @@ client.on('guildDelete', guild => {
 
 // Users messages
 client.on('message', async message => {
-    if (message.author.bot && message.author.id !== '440523141110956032') return;
+    if (message.author.bot) return;
 
     const guildId = message.channel.guild.id;
 
@@ -107,11 +107,11 @@ client.on('message', async message => {
         if (command === 'show') {
             const m = await message.channel.send(config.waitingMessage);
             if (message.member.hasPermission('KICK_MEMBERS')) {
-                controller.showMessages(args, guildId)
+                controller.showMessages(guildId)
                     .then(res => {
-                        let commands = '';
+                        let commands = 'Mensagens aprendidas em **' + message.guild.name + '**:\n';
                         res.forEach(elem => {
-                            commands += elem.trigger + ' = ' + elem.message + '\n';
+                            commands += '**' + elem.trigger + '** => ' + elem.message + '\n';
                         });
                         //console.log(commands);
                         m.edit('Checa a DM, brother! :call_me:');

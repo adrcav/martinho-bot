@@ -39,17 +39,15 @@ function addNewMessage(args, guidId) {
                 console.log(err);
                 reject(false);
             } else {
-                console.log(data);
+                //console.log(data);
                 resolve(data);
             }
         });
     });
 }
 
-function showMessages(args, guildId) {
+function showMessages(guildId) {
     return new Promise( function(resolve, reject) {
-        if (args.length !== 1) return reject('Invalid arguments');
-
         Message.find({
             guildId: guildId
         })
