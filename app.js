@@ -112,7 +112,7 @@ client.on('message', async message => {
                         let commands = 'Mensagens aprendidas em **' + message.guild.name + '**:';
                         message.author.send(commands);
                         res.forEach(elem => {
-                            commands += '**' + elem.trigger + '** => ' + elem.message +;
+                            commands += '**' + elem.trigger + '** => ' + elem.message;
                             message.author.send(commands);
                         });
                         //console.log(commands);
