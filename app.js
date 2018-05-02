@@ -109,13 +109,15 @@ client.on('message', async message => {
             if (message.member.hasPermission('KICK_MEMBERS')) {
                 controller.showMessages(guildId)
                     .then(res => {
-                        let commands = 'Mensagens aprendidas em **' + message.guild.name + '**:\n';
+                        let commands = 'Mensagens aprendidas em **' + message.guild.name + '**:';
+                        message.author.send(commands);
                         res.forEach(elem => {
-                            commands += '**' + elem.trigger + '** => ' + elem.message + '\n';
+                            commands += '**' + elem.trigger + '** => ' + elem.message +;
+                            message.author.send(commands);
                         });
                         //console.log(commands);
                         m.edit('Checa a DM, brother! :call_me:');
-                        message.author.send(commands);
+                        //message.author.send(commands);
                     })
                     .catch(err => {
                         console.log(err);
