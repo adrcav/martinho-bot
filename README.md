@@ -26,13 +26,13 @@ For testing your bot in Discord, use the command:
 npm start
 ```
 
-### Built With
+## Built With
 * [Discord.js](https://discord.js.org/)
 * [Mongoose](http://mongoosejs.com/)
 
-### Authors
+## Authors
 * Adriel Cavalcanti - [adrcav](https://github.com/adrcav)
 * Ítalo Sousa - [ItaloSa](https://github.com/ItaloSa)
 
-### License
+## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
