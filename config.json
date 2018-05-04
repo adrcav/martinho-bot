@@ -1,0 +1,35 @@
+{
+    "token": "YOUR_BOT_TOKEN",
+    "prefix": "$",
+    "waitingMessage": "Pera aê, mano... :nerd:",
+    "successMessages": [
+        "Show de bola! É muito top ficar mais inteligente :rofl:",
+        "Valeu, cara! Aprender é muito bom!",
+        "OPA!!! Cérebro funcionando, hein?! Aprendendo sempre :alien: :smiley:",
+        "EAE MENS!!! To aprendendo, viu? Preparem-se! :penguin:",
+        "Aí sim, aprendizado constante! Muito bom!!! :slight_smile: :upside_down:",
+        "O conhecimento liberta o homem de qualquer limitação. Dark Poet :eyes: :eyes:"
+    ],
+    "commands": [
+        {
+            "cmd": "ping",
+            "desc": "Retorna o ping do servidor."
+        },
+        {
+            "cmd": "add <palavra> = <resposta>",
+            "desc": "Adiciona uma resposta ao bot."
+        },
+        {
+            "cmd": "help",
+            "desc": "Lista de comandos."
+        },
+        {
+            "cmd": "say <mensagem>",
+            "desc": "O bot fala uma frase específica."
+        },
+        {
+            "cmd": "show",
+            "desc": "Exibe todas as respostas cadastradas."
+        }
+    ]
+}

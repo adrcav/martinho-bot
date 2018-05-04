@@ -1,0 +1,31 @@
+{
+  "name": "martinho-bot",
+  "version": "1.0.0",
+  "description": "A simple Discord Bot.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrcav/martinho-bot.git"
+  },
+  "contributors": [
+    "Adriel Cavalcanti",
+    "Ítalo Sousa"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adrcav/martinho-bot/issues"
+  },
+  "homepage": "https://github.com/adrcav/martinho-bot#readme",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "mongoose": "^5.0.16"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1"
+  }
+}
