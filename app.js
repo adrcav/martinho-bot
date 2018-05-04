@@ -5,16 +5,12 @@
 */
 
 const Discord = require('discord.js');
-const express = require('express');
 const mongoose = require('mongoose');
 const config = require('./config.json');
 const controller = require('./controller.js');
 
-const app = express();
-const port = process.env.PORT || 8080
-
 // Mongo connect
-mongoose.connect("mongodb://martinhodb:martinho147@martinhobot-shard-00-00-cus2j.mongodb.net:27017,martinhobot-shard-00-01-cus2j.mongodb.net:27017,martinhobot-shard-00-02-cus2j.mongodb.net:27017/test?ssl=true&replicaSet=MartinhoBot-shard-0&authSource=admin");
+mongoose.connect("YOUR_CONNECT_URL");
 
 mongoose.connection.on('error', function() {
     console.log('Could not connect to the database. Exiting now...');
@@ -89,7 +85,7 @@ client.on('message', async message => {
                             message.delete().catch(err => {
                                 console.log('Delete error: ' + err);
                             });
-                            // select a random success message
+                            // Select a random success message
                             let coolMessage = config.successMessages[controller.getRandomNumber(0, config.successMessages.length)];
                             m.edit(coolMessage);
                         })
@@ -115,9 +111,7 @@ client.on('message', async message => {
                             commands = '**' + elem.trigger + '** => ' + elem.message;
                             message.author.send(commands);
                         });
-                        //console.log(commands);
                         m.edit('Checa a DM, brother! :call_me:');
-                        //message.author.send(commands);
                     })
                     .catch(err => {
                         console.log(err);
@@ -139,14 +133,6 @@ client.on('message', async message => {
             });
     }
     
-});
-
-app.listen(port, function() {
-    console.log('Our app is running on port: ' + port);
-});
-
-app.get('/', (req, res) => {
-    res.send(200);
 });
 
 client.login(config.token);

@@ -22,7 +22,6 @@
   "homepage": "https://github.com/adrcav/martinho-bot#readme",
   "dependencies": {
     "discord.js": "^11.3.2",
-    "express": "^4.16.3",
     "mongoose": "^5.0.16"
   },
   "devDependencies": {

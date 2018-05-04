@@ -1,5 +1,5 @@
 {
-    "token": "NDM5ODg5NzA3ODM3NTU0NzI5.DcZuxw.iG1iyeVNegZMbVImKAH1Az41fiE",
+    "token": "YOUR_BOT_TOKEN",
     "prefix": "$",
     "waitingMessage": "Pera aê, mano... :nerd:",
     "successMessages": [
@@ -28,7 +28,7 @@
             "desc": "O bot fala uma frase específica."
         },
         {
-            "cmd": "show all",
+            "cmd": "show",
             "desc": "Exibe todas as respostas cadastradas."
         }
     ]
