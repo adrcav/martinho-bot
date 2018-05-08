@@ -1,5 +1,7 @@
 # martinho-bot
-[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://martinhobot.github.io/) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://mit-license.org/)
+
+![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m780370405-d4080b9da628277ba6709be1.svg) ![Node.js Version](https://img.shields.io/badge/node-%3E%3D%206.0.0-blue.svg)
+[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://martinhobot.github.io/) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 A simple Discord Bot.
 
@@ -35,4 +37,4 @@ npm start
 * Ítalo Sousa - [ItaloSa](https://github.com/ItaloSa)
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
